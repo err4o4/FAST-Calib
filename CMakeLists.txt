@@ -49,3 +49,4 @@ target_link_libraries(multi_fast_calib
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
   ${OpenCV_LIBRARIES}
+)
