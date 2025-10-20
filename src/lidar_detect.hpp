@@ -86,7 +86,7 @@ public:
         
         pcl::VoxelGrid<pcl::PointXYZ> voxel_filter;
         voxel_filter.setInputCloud(filtered_cloud_);
-        voxel_filter.setLeafSize(0.005f, 0.005f, 0.005f);
+        voxel_filter.setLeafSize(0.0025f, 0.0025f, 0.0025f);
         voxel_filter.filter(*filtered_cloud_);
         ROS_INFO("Filtered cloud size: %ld", filtered_cloud_->size());
 
@@ -149,7 +149,7 @@ public:
         boundary_estimator.setInputCloud(aligned_cloud_);
         boundary_estimator.setInputNormals(normals);
         boundary_estimator.setRadiusSearch(0.03); // 设置边界检测的搜索半径
-        boundary_estimator.setAngleThreshold(M_PI / 4); // 设置角度阈值
+        boundary_estimator.setAngleThreshold(M_PI / 2); // 2 设置角度阈值
         boundary_estimator.compute(boundaries);
     
         for (size_t i = 0; i < aligned_cloud_->size(); ++i) {
@@ -194,7 +194,7 @@ public:
             seg.setModelType(pcl::SACMODEL_CIRCLE2D);
             seg.setMethodType(pcl::SAC_RANSAC);
             seg.setDistanceThreshold(0.01); // 设置距离阈值
-            seg.setMaxIterations(1000);     // 设置最大迭代次数
+            seg.setMaxIterations(3000);     // 设置最大迭代次数
             seg.setInputCloud(cluster);
             seg.segment(*inliers, *coefficients);
     

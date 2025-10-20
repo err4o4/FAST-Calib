@@ -7,6 +7,9 @@ find_package(catkin REQUIRED COMPONENTS
   pcl_ros
   pcl_conversions
   geometry_msgs
+  cv_bridge
+  image_transport
+  image_geometry
 )
 
 find_package(PCL 1.10 REQUIRED)
@@ -14,6 +17,10 @@ find_package(OpenCV REQUIRED)
 
 catkin_package(
   CATKIN_DEPENDS roscpp sensor_msgs pcl_conversions pcl_ros
+  geometry_msgs
+  cv_bridge
+  image_transport
+  image_geometry
 )
 
 include_directories(
@@ -42,4 +49,3 @@ target_link_libraries(multi_fast_calib
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
   ${OpenCV_LIBRARIES}
-)
