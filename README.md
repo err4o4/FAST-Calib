@@ -20,14 +20,19 @@ In short, it makes extrinsic calibration as simple as intrinsic calibration.
 
 <p align="center">
   <img src="./pics/calib.jpg" width="100%">
-  <font color=#a0a0a0 size=2>Left: Example of circle extraction from Mid360 point cloud | Right: Point cloud colored with calibrated extrinsic.</font>
+  <font color=#a0a0a0 size=2>Left: Example of Mid360 LiDAR calibration. Right: Point cloud colored with the calibrated extrinsics.</font>
+</p>
+
+<p align="center">
+  <img src="./pics/all_lidar_type.jpg" width="100%">
+  <font color=#a0a0a0 size=2>Circular hole extraction supports multiple LiDAR models.</font>
 </p>
 
 ## 1. Prerequisites
 PCL>=1.8, OpenCV>=4.0.
 
 ## 2. Run our examples
-1. Prepare the static acquisition data in the `calib_data` folder (see [Single-scene Calibration Sample Data](https://connecthkuhk-my.sharepoint.com/:f:/g/personal/zhengcr_connect_hku_hk/Eq_k_4Mf_11Eggg4a5lbRzgBHwd0EivtCJd2ExtcNlu1FA?e=vjm4gH) from Mid360, Avia and Ouster, and [Multi-scene Calibration Sample Data](https://pan.baidu.com/s/1Mkw7EWfiFT68LEzdkQnxeg?pwd=nyuh) from Avia):
+1. Prepare the static acquisition data in the `calib_data` folder (see [Single-scene Calibration Sample Data](https://drive.google.com/drive/folders/1W87Dx3MUuPhTpCLvaavWqNUJZV03yU6L?usp=drive_link) from Mid360, Avia and Ouster, and [Multi-scene Calibration Sample Data](https://drive.google.com/drive/folders/1g__plgFqp5tsk-TY7Ioh4RXru62AdLmr?usp=drive_link) from Avia):
 - rosbag containing point cloud messages
 - corresponding image
 
@@ -47,6 +52,8 @@ roslaunch fast_calib multi_calib.launch
 3. Provide the instrinsic matrix in `qr_params.yaml`.
 4. Set distance filter in `qr_params.yaml` for board point cloud (extra points are acceptable).
 5. Calibrate now!
+
+💡 **Note:** You can run `scripts/distance_filter_tool.py` to quickly obtain suitable filter parameters.
 <p align="center">
   <img src="./pics/calibration_target.jpg" width="100%">
   <font color=#a0a0a0 size=2>Left: Actual calibration target | Right: Technical drawing with annotated dimensions.</font>
